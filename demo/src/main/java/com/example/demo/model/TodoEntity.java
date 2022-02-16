@@ -1,5 +1,3 @@
-// model + entity
-
 package com.example.demo.model;
 
 import javax.persistence.Entity;
@@ -7,12 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 @Builder
 @NoArgsConstructor
@@ -23,10 +20,9 @@ import lombok.NoArgsConstructor;
 public class TodoEntity {
 	@Id
 	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy="uuid")
-	private String id; // 이 오브젝트의 id
-	private String userId; // 이 오브젝트를 생성한 사용자의 id
-	private String title; // todo 타이틀(운동하기)
-	private boolean done; // true (todo를 완료했을 때)
-
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	private String id;
+	private String userId;
+	private String title;
+	private boolean done;
 }
