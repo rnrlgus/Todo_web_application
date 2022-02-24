@@ -29,10 +29,11 @@ public class TokenProvider {
 		return Jwts.builder()
 				// header에 들어갈 내용 및 서명을 하기 위한 시크릿 키
 				.signWith(SignatureAlgorithm.HS512, SECRET_KEY)
+				.setSubject(userEntity.getId())
 				.setIssuer("demo app")
 				.setIssuedAt(new Date())
-						.setExpiration(expiryDate)
-						.compact();
+				.setExpiration(expiryDate)
+				.compact();
 	}
 	
 	public String validateAndGetUserId(String token ) {
