@@ -40,9 +40,9 @@ public class UserController {
 					.password(passwordEncoder.encode(userDTO.getPassword()))
 					.build();
 		
-		// 서비스를 이용해 리포지터리에 사용자 저장
-		UserEntity registeredUser = userService.create(user);
-		UserDTO responseUserDTO = UserDTO.builder()
+			// 서비스를 이용해 리포지터리에 사용자 저장
+			UserEntity registeredUser = userService.create(user);
+			UserDTO responseUserDTO = UserDTO.builder()
 				.email(registeredUser.getEmail())
 				.id(registeredUser.getId())
 				.username(registeredUser.getUsername())
