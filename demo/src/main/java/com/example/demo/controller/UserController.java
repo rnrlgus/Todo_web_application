@@ -33,14 +33,12 @@ public class UserController {
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
 		try {
-			// 요청을 이용해 저장할 사용자 만들기
 			UserEntity user = UserEntity.builder()
 					.email(userDTO.getEmail())
 					.username(userDTO.getUsername())
 					.password(passwordEncoder.encode(userDTO.getPassword()))
 					.build();
 		
-			// 서비스를 이용해 리포지터리에 사용자 저장
 			UserEntity registeredUser = userService.create(user);
 			UserDTO responseUserDTO = UserDTO.builder()
 				.email(registeredUser.getEmail())
@@ -50,7 +48,6 @@ public class UserController {
 		
 		return ResponseEntity.ok().body(responseUserDTO);
 		} catch (Exception e) {
-			// 사용자 정보는 항상 하나이므로 리스트로 만들어야하는 ResponseDTO를 사용하지 않고 그냥 UserDTO 리턴
 			ResponseDTO responseDTO = ResponseDTO.builder().error(e.getMessage()).build();
 			return ResponseEntity
 					.badRequest()
